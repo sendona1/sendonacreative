@@ -24,26 +24,21 @@ a:hover{opacity:.6}
 .field::placeholder{color:#767676}
 .send{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;background:#0A0A0A;color:#FFFFFF;border:0;padding:18px 32px;min-height:48px;cursor:pointer;border-radius:0}
 .send:hover{background:#333333}
-.ticker{overflow:hidden;border-bottom:1px solid #E2E2E2;background:#FFFFFF;padding:13px 0}
+.ticker{overflow:hidden;border-top:1px solid #E2E2E2;border-bottom:1px solid #E2E2E2;background:#FFFFFF;padding:26px 0;margin-top:24px}
 .tk-track{display:flex;width:max-content;animation:tk-scroll 90s linear infinite}
 .ticker:hover .tk-track{animation-play-state:paused}
 .tk-set{display:flex;flex-shrink:0}
-.tk-item{display:inline-flex;align-items:baseline;gap:12px;white-space:nowrap;padding-right:56px}
-.tk-item::after{content:"";width:5px;height:5px;background:#0A0A0A;border-radius:50%;margin-left:56px;align-self:center}
-.tk-n{font-size:11px;letter-spacing:.3em;color:#6B6B6B}
-.tk-t{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-.tk-d{font-size:13px;font-weight:300;color:#3A3A3A}
+.tk-item{display:inline-flex;align-items:baseline;gap:18px;white-space:nowrap;padding-right:72px}
+.tk-item::after{content:"";width:7px;height:7px;background:#0A0A0A;border-radius:50%;margin-left:72px;align-self:center}
+.tk-n{font-size:14px;letter-spacing:.3em;color:#6B6B6B}
+.tk-t{font-size:clamp(20px,2.2vw,30px);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.tk-d{font-size:clamp(15px,1.3vw,18px);font-weight:300;color:#3A3A3A}
 @keyframes tk-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.tk-track{animation:none}.ticker{overflow-x:auto}}
 </style>
 </head>
 <body>
 <div style="background:#FFFFFF;color:#0A0A0A;font-family:'Archivo',sans-serif;width:100%;overflow-x:hidden">
-
-<!-- TICKER: what we create -->
-<div class="ticker" aria-label="What we create: content we specialize in">
-<div class="tk-track"><div class="tk-set"><span class="tk-item"><span class="tk-n">01</span><span class="tk-t">Viral / Social Media</span><span class="tk-d">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</span></span><span class="tk-item"><span class="tk-n">02</span><span class="tk-t">Spec-Ads for Brands</span><span class="tk-d">High-production concept ads made for your brand.</span></span><span class="tk-item"><span class="tk-n">03</span><span class="tk-t">UGC for Brands</span><span class="tk-d">Creator-style content that feels native to the feed and moves people to buy.</span></span><span class="tk-item"><span class="tk-n">04</span><span class="tk-t">AI Video Creation</span><span class="tk-d">Carefully curated UGC-focused videos designed to convert, increase revenue and scale ad spend.</span></span></div><div class="tk-set" aria-hidden="true"><span class="tk-item"><span class="tk-n">01</span><span class="tk-t">Viral / Social Media</span><span class="tk-d">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</span></span><span class="tk-item"><span class="tk-n">02</span><span class="tk-t">Spec-Ads for Brands</span><span class="tk-d">High-production concept ads made for your brand.</span></span><span class="tk-item"><span class="tk-n">03</span><span class="tk-t">UGC for Brands</span><span class="tk-d">Creator-style content that feels native to the feed and moves people to buy.</span></span><span class="tk-item"><span class="tk-n">04</span><span class="tk-t">AI Video Creation</span><span class="tk-d">Carefully curated UGC-focused videos designed to convert, increase revenue and scale ad spend.</span></span></div></div>
-</div>
 
 <!-- NAV -->
 <header style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:32px 6vw;box-sizing:border-box">
@@ -56,8 +51,14 @@ a:hover{opacity:.6}
 </nav>
 </header>
 
+<!-- TICKER: what we create -->
+<div class="ticker" aria-label="What we create: content we specialize in">
+<div class="tk-track"><div class="tk-set"><span class="tk-item"><span class="tk-n">01</span><span class="tk-t">Viral / Social Media</span><span class="tk-d">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</span></span><span class="tk-item"><span class="tk-n">02</span><span class="tk-t">Spec-Ads for Brands</span><span class="tk-d">High-production concept ads made for your brand.</span></span><span class="tk-item"><span class="tk-n">03</span><span class="tk-t">UGC for Brands</span><span class="tk-d">Creator-style content that feels native to the feed and moves people to buy.</span></span><span class="tk-item"><span class="tk-n">04</span><span class="tk-t">AI Video Creation</span><span class="tk-d">Carefully curated UGC-focused videos designed to convert, increase revenue and scale ad spend.</span></span></div><div class="tk-set" aria-hidden="true"><span class="tk-item"><span class="tk-n">01</span><span class="tk-t">Viral / Social Media</span><span class="tk-d">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</span></span><span class="tk-item"><span class="tk-n">02</span><span class="tk-t">Spec-Ads for Brands</span><span class="tk-d">High-production concept ads made for your brand.</span></span><span class="tk-item"><span class="tk-n">03</span><span class="tk-t">UGC for Brands</span><span class="tk-d">Creator-style content that feels native to the feed and moves people to buy.</span></span><span class="tk-item"><span class="tk-n">04</span><span class="tk-t">AI Video Creation</span><span class="tk-d">Carefully curated UGC-focused videos designed to convert, increase revenue and scale ad spend.</span></span></div></div>
+</div>
+
+
 <!-- HERO -->
-<section id="top" style="padding:80px 6vw 120px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:56px;align-items:center;max-width:1440px;margin:0 auto">
+<section id="top" style="padding:64px 6vw 120px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:56px;align-items:center;max-width:1440px;margin:0 auto">
 <div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:40px">
 <div style="font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">Creative Group · Scottsdale · San Diego · Melbourne</div>
 <h1 style="margin:0;font-weight:800;font-size:clamp(44px,6.5vw,104px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase">Attention<br>engineered.</h1>
