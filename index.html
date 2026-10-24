@@ -24,17 +24,8 @@ a:hover{opacity:.6}
 .field::placeholder{color:#767676}
 .send{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;background:#0A0A0A;color:#FFFFFF;border:0;padding:18px 32px;min-height:48px;cursor:pointer;border-radius:0}
 .send:hover{background:#333333}
-.ticker{overflow:hidden;border-top:1px solid #E2E2E2;border-bottom:1px solid #E2E2E2;background:#FFFFFF;padding:26px 0;margin-top:24px}
-.tk-track{display:flex;width:max-content;animation:tk-scroll 90s linear infinite}
-.ticker:hover .tk-track{animation-play-state:paused}
-.tk-set{display:flex;flex-shrink:0}
-.tk-item{display:inline-flex;align-items:baseline;gap:18px;white-space:nowrap;padding-right:72px}
-.tk-item::after{content:"";width:7px;height:7px;background:#0A0A0A;border-radius:50%;margin-left:72px;align-self:center}
-.tk-n{font-size:14px;letter-spacing:.3em;color:#6B6B6B}
-.tk-t{font-size:clamp(20px,2.2vw,30px);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.tk-d{font-size:clamp(15px,1.3vw,18px);font-weight:300;color:#3A3A3A}
-@keyframes tk-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.tk-track{animation:none}.ticker{overflow-x:auto}}
+.titleband{border-top:1px solid #E2E2E2;border-bottom:1px solid #E2E2E2;margin-top:24px;padding:34px 6vw;box-sizing:border-box}
+.titleband h2{margin:0;max-width:1440px;font-weight:800;font-size:clamp(20px,2.6vw,38px);letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
 </style>
 </head>
 <body>
@@ -52,9 +43,8 @@ a:hover{opacity:.6}
 </header>
 
 <!-- TICKER: what we create -->
-<div class="ticker" aria-label="What we create: content we specialize in">
-<div class="tk-track"><div class="tk-set"><span class="tk-item"><span class="tk-n">01</span><span class="tk-t">Video Production &amp; Editing</span></span><span class="tk-item"><span class="tk-n">02</span><span class="tk-t">Viral / Social Media Content &amp; Consulting</span><span class="tk-d">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</span></span><span class="tk-item"><span class="tk-n">03</span><span class="tk-t">Spec-Ads for Brands</span><span class="tk-d">High-production concept ads made for your brand.</span></span><span class="tk-item"><span class="tk-n">04</span><span class="tk-t">UGC for Brands</span><span class="tk-d">Creator-style content that feels native to the feed and moves people to buy.</span></span><span class="tk-item"><span class="tk-n">05</span><span class="tk-t">Brand, Athlete, Influencer &amp; Consulting</span></span></div><div class="tk-set" aria-hidden="true"><span class="tk-item"><span class="tk-n">01</span><span class="tk-t">Video Production &amp; Editing</span></span><span class="tk-item"><span class="tk-n">02</span><span class="tk-t">Viral / Social Media Content &amp; Consulting</span><span class="tk-d">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</span></span><span class="tk-item"><span class="tk-n">03</span><span class="tk-t">Spec-Ads for Brands</span><span class="tk-d">High-production concept ads made for your brand.</span></span><span class="tk-item"><span class="tk-n">04</span><span class="tk-t">UGC for Brands</span><span class="tk-d">Creator-style content that feels native to the feed and moves people to buy.</span></span><span class="tk-item"><span class="tk-n">05</span><span class="tk-t">Brand, Athlete, Influencer &amp; Consulting</span></span></div></div>
-</div>
+<!-- TITLE BAND -->
+<div class="titleband"><h2>Video production. Social Media Content. Brand/Athlete Consulting.</h2></div>
 
 
 <!-- HERO -->
@@ -71,6 +61,21 @@ a:hover{opacity:.6}
 </div>
 <div style="flex:1 1 480px;min-width:0">
 <img src="assets/hero-globe.jpg" alt="Silhouette of a figure climbing out of a steel globe sculpture against the sun" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:48% 50%">
+</div>
+</section>
+
+<!-- WHAT WE CREATE -->
+<section id="content" style="border-top:1px solid #E2E2E2;padding:100px 6vw 120px;box-sizing:border-box;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.5vw,64px);letter-spacing:-.01em;text-transform:uppercase;line-height:1">What we create</h2>
+<div style="font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Content we specialize in</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:32px">
+<div style="flex:1 1 190px;min-width:0;border-top:1px solid #0A0A0A;padding-top:24px;display:flex;flex-direction:column;gap:16px"><div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">01</div><h3 style="margin:0;font-weight:800;font-size:clamp(19px,1.7vw,25px);letter-spacing:.02em;text-transform:uppercase">Video Production &amp; Editing</h3></div>
+<div style="flex:1 1 190px;min-width:0;border-top:1px solid #0A0A0A;padding-top:24px;display:flex;flex-direction:column;gap:16px"><div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">02</div><h3 style="margin:0;font-weight:800;font-size:clamp(19px,1.7vw,25px);letter-spacing:.02em;text-transform:uppercase">Viral / Social Media Content &amp; Consulting</h3><p style="margin:0;font-size:16px;line-height:1.6;font-weight:300;color:#3A3A3A">Content built to capture audiences &amp; grow brands. Short-form content built to travel, grounded in the science of capturing attention.</p></div>
+<div style="flex:1 1 190px;min-width:0;border-top:1px solid #0A0A0A;padding-top:24px;display:flex;flex-direction:column;gap:16px"><div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">03</div><h3 style="margin:0;font-weight:800;font-size:clamp(19px,1.7vw,25px);letter-spacing:.02em;text-transform:uppercase">Spec-Ads for Brands</h3><p style="margin:0;font-size:16px;line-height:1.6;font-weight:300;color:#3A3A3A">High-production concept ads made for your brand.</p></div>
+<div style="flex:1 1 190px;min-width:0;border-top:1px solid #0A0A0A;padding-top:24px;display:flex;flex-direction:column;gap:16px"><div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">04</div><h3 style="margin:0;font-weight:800;font-size:clamp(19px,1.7vw,25px);letter-spacing:.02em;text-transform:uppercase">UGC for Brands</h3><p style="margin:0;font-size:16px;line-height:1.6;font-weight:300;color:#3A3A3A">Creator-style content that feels native to the feed and moves people to buy.</p></div>
+<div style="flex:1 1 190px;min-width:0;border-top:1px solid #0A0A0A;padding-top:24px;display:flex;flex-direction:column;gap:16px"><div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">05</div><h3 style="margin:0;font-weight:800;font-size:clamp(19px,1.7vw,25px);letter-spacing:.02em;text-transform:uppercase">Brand, Athlete, Influencer &amp; Consulting</h3></div>
 </div>
 </section>
 
