@@ -26,6 +26,13 @@ a:hover{opacity:.6}
 .send:hover{background:#333333}
 .titleband{border-top:1px solid #E2E2E2;border-bottom:1px solid #E2E2E2;margin-top:24px;padding:34px 6vw;box-sizing:border-box}
 .titleband h2{margin:0;max-width:1440px;font-weight:800;font-size:clamp(20px,2.6vw,38px);letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
+.reel{position:relative;max-width:1440px;margin:0 auto;padding:40px 6vw 0;box-sizing:border-box}
+.reel-wrap{position:relative;background:#0A0A0A;line-height:0;overflow:hidden}
+.reel video{width:100%;height:auto;aspect-ratio:1920/1012;display:block;object-fit:cover}
+.reel-hint{position:absolute;left:20px;bottom:18px;line-height:1;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#fff;background:rgba(10,10,10,.65);padding:10px 14px;transition:opacity .3s;pointer-events:none}
+.reel-snd{position:absolute;right:20px;bottom:18px;line-height:1;font:500 11px 'Archivo',sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#fff;background:rgba(10,10,10,.65);border:0;padding:10px 14px;min-height:36px;cursor:pointer;opacity:0;transition:opacity .3s}
+.reel-wrap.on .reel-hint{opacity:0}.reel-wrap.on .reel-snd{opacity:1}
+.reel-snd:hover{background:rgba(10,10,10,.9)}
 </style>
 </head>
 <body>
@@ -45,6 +52,33 @@ a:hover{opacity:.6}
 <!-- TICKER: what we create -->
 <!-- TITLE BAND -->
 <div class="titleband"><h2>Video production<br>Social media<br>Brand &amp; athlete consulting</h2></div>
+
+<!-- SHOWREEL -->
+<section class="reel" id="reel" aria-label="Showreel">
+<div class="reel-wrap" id="reelWrap">
+<video id="reelVideo" poster="assets/showreel-poster.jpg" muted loop playsinline preload="metadata"><source src="assets/showreel.mp4" type="video/mp4"><source src="assets/showreel.webm" type="video/webm"></video>
+<div class="reel-hint" id="reelHint">Hover to play</div>
+<button class="reel-snd" id="reelSnd" type="button" aria-pressed="false">Sound off</button>
+</div>
+</section>
+<script>
+(function(){
+var w=document.getElementById('reelWrap'),v=document.getElementById('reelVideo'),b=document.getElementById('reelSnd'),h=document.getElementById('reelHint');
+if(!v)return;
+var hover=window.matchMedia&&window.matchMedia('(hover:hover)').matches;
+function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});w.classList.add('on')}
+function pause(){v.pause();w.classList.remove('on')}
+if(hover){
+  w.addEventListener('mouseenter',play);
+  w.addEventListener('mouseleave',pause);
+}else{
+  h.textContent='Tap to play';
+  w.addEventListener('click',function(e){if(e.target===b)return;v.paused?play():pause()});
+}
+b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;b.textContent=v.muted?'Sound off':'Sound on';b.setAttribute('aria-pressed',String(!v.muted))});
+})();
+</script>
+
 
 
 <!-- HERO -->
