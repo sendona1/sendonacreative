@@ -33,13 +33,13 @@ a:hover{opacity:.6}
 .reel-snd{position:absolute;right:20px;bottom:18px;line-height:1;font:500 11px 'Archivo',sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#fff;background:rgba(10,10,10,.65);border:0;padding:10px 14px;min-height:36px;cursor:pointer;opacity:0;transition:opacity .3s}
 .reel-wrap.on .reel-hint{opacity:0}.reel-wrap.on .reel-snd{opacity:1}
 .reel-snd:hover{background:rgba(10,10,10,.9)}
-.dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.dp-ph{display:block;overflow:hidden;background:#F4F4F4;aspect-ratio:3/2;line-height:0;cursor:zoom-in}
-.dp-ph.dp-wide{grid-column:1/-1;aspect-ratio:16/9}
+.dp-grid{--w:min(88vw,1268px);display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:calc((var(--w) - 32px)/3*.75);gap:16px}
+.dp-ph{display:block;overflow:hidden;background:#F4F4F4;line-height:0;cursor:zoom-in;min-height:0}
+.dp-ph.dp-wide{grid-column:span 2}
 .dp-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
-.dp-ph.dp-wide img{object-position:50% 70%}
+.dp-ph.dp-wide:first-child img{object-position:50% 62%}
 .dp-ph:hover{opacity:1}.dp-ph:hover img{transform:scale(1.03)}
-@media (max-width:560px){.dp-grid{grid-template-columns:1fr}}
+@media (max-width:760px){.dp-grid{grid-template-columns:1fr;grid-auto-rows:auto}.dp-ph,.dp-ph.dp-wide{grid-column:auto;aspect-ratio:3/2}}
 .lb{position:fixed;inset:0;background:rgba(255,255,255,.97);display:none;align-items:center;justify-content:center;z-index:50;padding:5vh 5vw;cursor:zoom-out}
 .lb.open{display:flex}.lb img{max-width:100%;max-height:100%;object-fit:contain}
 .lb-x{position:absolute;top:18px;right:22px;font:500 12px 'Archivo',sans-serif;letter-spacing:.25em;text-transform:uppercase;background:none;border:0;color:#0A0A0A;cursor:pointer;padding:12px}
@@ -125,7 +125,7 @@ a:hover{opacity:.6}
 <a class="dp-ph" href="assets/driven/driven-3.jpg" data-lb><img src="assets/driven/driven-3.jpg" alt="Matte black supercars lined up" loading="lazy"></a>
 <a class="dp-ph" href="assets/driven/driven-4.jpg" data-lb><img src="assets/driven/driven-4.jpg" alt="Blue McLaren with the hood open at the track" loading="lazy"></a>
 <a class="dp-ph" href="assets/driven/driven-5.jpg" data-lb><img src="assets/driven/driven-5.jpg" alt="BoundAI Lamborghini race car outside the garages" loading="lazy"></a>
-<a class="dp-ph" href="assets/driven/driven-6.jpg" data-lb><img src="assets/driven/driven-6.jpg" alt="Yellow Lotus on pit lane" loading="lazy"></a>
+<a class="dp-ph dp-wide" href="assets/driven/driven-6.jpg" data-lb><img src="assets/driven/driven-6.jpg" alt="Yellow Lotus on pit lane" loading="lazy"></a>
 <a class="dp-ph" href="assets/driven/driven-7.jpg" data-lb><img src="assets/driven/driven-7.jpg" alt="Camera crew shooting from the back of a Cybertruck" loading="lazy"></a>
 </div>
 </article>
