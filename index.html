@@ -33,6 +33,16 @@ a:hover{opacity:.6}
 .reel-snd{position:absolute;right:20px;bottom:18px;line-height:1;font:500 11px 'Archivo',sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#fff;background:rgba(10,10,10,.65);border:0;padding:10px 14px;min-height:36px;cursor:pointer;opacity:0;transition:opacity .3s}
 .reel-wrap.on .reel-hint{opacity:0}.reel-wrap.on .reel-snd{opacity:1}
 .reel-snd:hover{background:rgba(10,10,10,.9)}
+.dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.dp-ph{display:block;overflow:hidden;background:#F4F4F4;aspect-ratio:3/2;line-height:0;cursor:zoom-in}
+.dp-ph.dp-wide{grid-column:1/-1;aspect-ratio:16/9}
+.dp-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.dp-ph.dp-wide img{object-position:50% 70%}
+.dp-ph:hover{opacity:1}.dp-ph:hover img{transform:scale(1.03)}
+@media (max-width:560px){.dp-grid{grid-template-columns:1fr}}
+.lb{position:fixed;inset:0;background:rgba(255,255,255,.97);display:none;align-items:center;justify-content:center;z-index:50;padding:5vh 5vw;cursor:zoom-out}
+.lb.open{display:flex}.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb-x{position:absolute;top:18px;right:22px;font:500 12px 'Archivo',sans-serif;letter-spacing:.25em;text-transform:uppercase;background:none;border:0;color:#0A0A0A;cursor:pointer;padding:12px}
 </style>
 </head>
 <body>
@@ -61,26 +71,6 @@ a:hover{opacity:.6}
 <button class="reel-snd" id="reelSnd" type="button" aria-pressed="false">Sound off</button>
 </div>
 </section>
-<script>
-(function(){
-var w=document.getElementById('reelWrap'),v=document.getElementById('reelVideo'),b=document.getElementById('reelSnd'),h=document.getElementById('reelHint');
-if(!v)return;
-var hover=window.matchMedia&&window.matchMedia('(hover:hover)').matches;
-function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});w.classList.add('on')}
-function pause(){v.pause();w.classList.remove('on')}
-if(hover){
-  w.addEventListener('mouseenter',play);
-  w.addEventListener('mouseleave',pause);
-}else{
-  h.textContent='Tap to play';
-  w.addEventListener('click',function(e){if(e.target===b)return;v.paused?play():pause()});
-}
-b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;b.textContent=v.muted?'Sound off':'Sound on';b.setAttribute('aria-pressed',String(!v.muted))});
-})();
-</script>
-
-
-
 <!-- HERO -->
 <section id="top" style="padding:64px 6vw 120px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:56px;align-items:center;max-width:1440px;margin:0 auto">
 <div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:40px">
@@ -119,50 +109,26 @@ b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;b.te
 <h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.5vw,64px);letter-spacing:-.01em;text-transform:uppercase;line-height:1">Selected work</h2>
 <div style="font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Film / Campaign / Documentary</div>
 </div>
-<div style="display:flex;flex-wrap:wrap;gap:32px">
-<div style="flex:1 1 100%;display:flex;flex-direction:column;gap:16px;min-width:0">
-<!-- VIDEO SLOT: replace the placeholder div below with your embed, e.g.
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Featured Film" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-<div style="position:relative;width:100%;aspect-ratio:16/9;background:#F4F4F4;border:1px solid #D6D6D6;display:flex;align-items:center;justify-content:center;box-sizing:border-box">
-<div style="display:flex;flex-direction:column;align-items:center;gap:16px;color:#767676">
-<svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0A0A0A" stroke-width="1.5" aria-hidden="true"><circle cx="28" cy="28" r="26"></circle><path d="M23 19 L37 28 L23 37 Z"></path></svg>
-<span style="font-size:12px;letter-spacing:.25em;text-transform:uppercase">Embed video here</span>
+<article id="driven-project" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:baseline">
+<h3 style="margin:0;font-weight:800;font-size:clamp(24px,3vw,40px);letter-spacing:.02em;text-transform:uppercase">Driven Project</h3>
+<div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B">Video / Photography</div>
 </div>
+<div class="reel-wrap" id="dpWrap">
+<video id="dpVideo" poster="assets/driven/driven-project-poster.jpg" muted loop playsinline preload="metadata" style="width:100%;height:auto;aspect-ratio:960/508;display:block;object-fit:cover"><source src="assets/driven/driven-project.mp4" type="video/mp4"><source src="assets/driven/driven-project.webm" type="video/webm"></video>
+<div class="reel-hint" id="dpHint">Hover to play</div>
+<button class="reel-snd" id="dpSnd" type="button" aria-pressed="false">Sound off</button>
 </div>
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline">
-<div style="font-weight:500;font-size:18px;letter-spacing:.04em;text-transform:uppercase">Featured Film</div>
-<div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B">Commercial / Branded film</div>
+<div class="dp-grid">
+<a class="dp-ph dp-wide" href="assets/driven/driven-1.jpg" data-lb><img src="assets/driven/driven-1.jpg" alt="Therapy dogs watching cars on the track" loading="lazy"></a>
+<a class="dp-ph" href="assets/driven/driven-2.jpg" data-lb><img src="assets/driven/driven-2.jpg" alt="Driver and young passenger giving a thumbs up in a Driven Project car" loading="lazy"></a>
+<a class="dp-ph" href="assets/driven/driven-3.jpg" data-lb><img src="assets/driven/driven-3.jpg" alt="Matte black supercars lined up" loading="lazy"></a>
+<a class="dp-ph" href="assets/driven/driven-4.jpg" data-lb><img src="assets/driven/driven-4.jpg" alt="Blue McLaren with the hood open at the track" loading="lazy"></a>
+<a class="dp-ph" href="assets/driven/driven-5.jpg" data-lb><img src="assets/driven/driven-5.jpg" alt="BoundAI Lamborghini race car outside the garages" loading="lazy"></a>
+<a class="dp-ph" href="assets/driven/driven-6.jpg" data-lb><img src="assets/driven/driven-6.jpg" alt="Yellow Lotus on pit lane" loading="lazy"></a>
+<a class="dp-ph" href="assets/driven/driven-7.jpg" data-lb><img src="assets/driven/driven-7.jpg" alt="Camera crew shooting from the back of a Cybertruck" loading="lazy"></a>
 </div>
-</div>
-<div style="flex:1 1 420px;display:flex;flex-direction:column;gap:16px;min-width:0">
-<!-- VIDEO SLOT: replace the placeholder div below with your embed, e.g.
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Project Two" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-<div style="position:relative;width:100%;aspect-ratio:16/9;background:#F4F4F4;border:1px solid #D6D6D6;display:flex;align-items:center;justify-content:center;box-sizing:border-box">
-<div style="display:flex;flex-direction:column;align-items:center;gap:16px;color:#767676">
-<svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0A0A0A" stroke-width="1.5" aria-hidden="true"><circle cx="28" cy="28" r="26"></circle><path d="M23 19 L37 28 L23 37 Z"></path></svg>
-<span style="font-size:12px;letter-spacing:.25em;text-transform:uppercase">Embed video here</span>
-</div>
-</div>
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline">
-<div style="font-weight:500;font-size:18px;letter-spacing:.04em;text-transform:uppercase">Project Two</div>
-<div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B">Documentary storytelling</div>
-</div>
-</div>
-<div style="flex:1 1 420px;display:flex;flex-direction:column;gap:16px;min-width:0">
-<!-- VIDEO SLOT: replace the placeholder div below with your embed, e.g.
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Project Three" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-<div style="position:relative;width:100%;aspect-ratio:16/9;background:#F4F4F4;border:1px solid #D6D6D6;display:flex;align-items:center;justify-content:center;box-sizing:border-box">
-<div style="display:flex;flex-direction:column;align-items:center;gap:16px;color:#767676">
-<svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0A0A0A" stroke-width="1.5" aria-hidden="true"><circle cx="28" cy="28" r="26"></circle><path d="M23 19 L37 28 L23 37 Z"></path></svg>
-<span style="font-size:12px;letter-spacing:.25em;text-transform:uppercase">Embed video here</span>
-</div>
-</div>
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline">
-<div style="font-weight:500;font-size:18px;letter-spacing:.04em;text-transform:uppercase">Project Three</div>
-<div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B">Athlete / creator film</div>
-</div>
-</div>
-</div>
+</article>
 </section>
 
 <!-- CONSULTING -->
@@ -212,5 +178,27 @@ b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;b.te
 </footer>
 
 </div>
+<script>
+(function(){
+function init(wid,vid,sid,hid){
+var w=document.getElementById(wid),v=document.getElementById(vid),b=document.getElementById(sid),h=document.getElementById(hid);
+if(!v)return;
+var hover=window.matchMedia&&window.matchMedia('(hover:hover)').matches;
+function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});w.classList.add('on')}
+function pause(){v.pause();w.classList.remove('on')}
+if(hover){w.addEventListener('mouseenter',play);w.addEventListener('mouseleave',pause)}
+else{h.textContent='Tap to play';w.addEventListener('click',function(e){if(e.target===b)return;v.paused?play():pause()})}
+b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;b.textContent=v.muted?'Sound off':'Sound on';b.setAttribute('aria-pressed',String(!v.muted))});
+}
+init('reelWrap','reelVideo','reelSnd','reelHint');
+init('dpWrap','dpVideo','dpSnd','dpHint');
+var lb=document.createElement('div');lb.className='lb';lb.innerHTML='<button class="lb-x" type="button">Close</button><img alt="">';document.body.appendChild(lb);
+var li=lb.querySelector('img');
+function close(){lb.classList.remove('open')}
+lb.addEventListener('click',close);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+document.querySelectorAll('[data-lb]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();li.src=a.href;li.alt=a.querySelector('img').alt;lb.classList.add('open')})});
+})();
+</script>
 </body>
 </html>
