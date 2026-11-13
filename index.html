@@ -47,6 +47,9 @@ a:hover{opacity:.6}
 .lb{position:fixed;inset:0;background:rgba(255,255,255,.97);display:none;align-items:center;justify-content:center;z-index:50;padding:5vh 5vw;cursor:zoom-out}
 .lb.open{display:flex}.lb img{max-width:100%;max-height:100%;object-fit:contain}
 .lb-x{position:absolute;top:18px;right:22px;font:500 12px 'Archivo',sans-serif;letter-spacing:.25em;text-transform:uppercase;background:none;border:0;color:#0A0A0A;cursor:pointer;padding:12px}
+.vstage{background:#F4F4F4;display:flex;justify-content:center;padding:clamp(24px,4vw,56px)}
+.vwrap{width:min(100%,400px)}
+.ugc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,380px));gap:48px 32px;justify-content:start}
 </style>
 </head>
 <body>
@@ -67,14 +70,6 @@ a:hover{opacity:.6}
 <!-- TITLE BAND -->
 <div class="titleband"><h2>Attention media<br>Video production<br>Brand &amp; athlete consulting</h2></div>
 
-<!-- SHOWREEL -->
-<section class="reel" id="reel" aria-label="Showreel">
-<div class="reel-wrap" id="reelWrap">
-<video id="reelVideo" poster="assets/showreel-poster.jpg" muted loop playsinline preload="metadata"><source src="assets/showreel.mp4" type="video/mp4"><source src="assets/showreel.webm" type="video/webm"></video>
-<div class="reel-hint" id="reelHint">Hover to play</div>
-<button class="reel-snd" id="reelSnd" type="button" aria-pressed="false">Sound off</button>
-</div>
-</section>
 <!-- HERO -->
 <section id="top" style="padding:64px 6vw 120px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:56px;align-items:center;max-width:1440px;margin:0 auto">
 <div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:40px">
@@ -107,7 +102,7 @@ a:hover{opacity:.6}
 </section>
 
 <!-- SELECTED WORK / VIDEO EMBEDS -->
-<section id="work" style="border-top:1px solid #E2E2E2;padding:100px 6vw 120px;box-sizing:border-box;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+<section id="work" style="border-top:1px solid #E2E2E2;padding:100px 6vw 120px;box-sizing:border-box;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:96px">
 <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end">
 <h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.5vw,64px);letter-spacing:-.01em;text-transform:uppercase;line-height:1">Selected work</h2>
 <div style="font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Film / Campaign / Documentary</div>
@@ -135,7 +130,50 @@ a:hover{opacity:.6}
 <div class="dp-ctl"><span class="dp-count" id="dpCount">01 / 07</span><button type="button" class="dp-btn" id="dpPrev" aria-label="Previous photo">&larr;</button><button type="button" class="dp-btn" id="dpNext" aria-label="Next photo">&rarr;</button></div>
 </div>
 </article>
+<article id="subway-surfing" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:baseline">
+<h3 style="margin:0;font-weight:800;font-size:clamp(24px,3vw,40px);letter-spacing:.02em;text-transform:uppercase">Subway Surfing</h3>
+<div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B">Video</div>
+</div>
+<div class="vstage"><div class="reel-wrap vwrap">
+<video poster="assets/work/subway-surfing-poster.jpg" muted loop playsinline preload="metadata" style="width:100%;height:auto;aspect-ratio:720/1280;display:block;object-fit:cover"><source src="assets/work/subway-surfing.mp4" type="video/mp4"><source src="assets/work/subway-surfing.webm" type="video/webm"></video>
+<div class="reel-hint">Hover to play</div>
+<button class="reel-snd" type="button" aria-pressed="false">Sound off</button>
+</div></div>
+</article>
+<article id="rec-gen" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:baseline">
+<h3 style="margin:0;font-weight:800;font-size:clamp(24px,3vw,40px);letter-spacing:.02em;text-transform:uppercase">Rec Gen</h3>
+<div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6B6B6B">Video</div>
+</div>
+<div class="reel-wrap">
+<video poster="assets/showreel-poster.jpg" muted loop playsinline preload="metadata" style="width:100%;height:auto;aspect-ratio:1920/1012;display:block;object-fit:cover"><source src="assets/showreel.mp4" type="video/mp4"><source src="assets/showreel.webm" type="video/webm"></video>
+<div class="reel-hint">Hover to play</div>
+<button class="reel-snd" type="button" aria-pressed="false">Sound off</button>
+</div>
+</article>
 </section>
+
+<!-- UGC -->
+<section id="ugc" style="border-top:1px solid #E2E2E2;padding:100px 6vw 120px;box-sizing:border-box;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.5vw,64px);letter-spacing:-.01em;text-transform:uppercase;line-height:1">UGC</h2>
+<div style="font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Creator-style content for brands</div>
+</div>
+<div class="ugc-grid">
+<article style="display:flex;flex-direction:column;gap:20px"><div class="reel-wrap">
+<video poster="assets/work/manta-sleep-poster.jpg" muted loop playsinline preload="metadata" style="width:100%;height:auto;aspect-ratio:1080/1920;display:block;object-fit:cover"><source src="assets/work/manta-sleep.mp4" type="video/mp4"><source src="assets/work/manta-sleep.webm" type="video/webm"></video>
+<div class="reel-hint">Hover to play</div>
+<button class="reel-snd" type="button" aria-pressed="false">Sound off</button>
+</div><h3 style="margin:0;font-weight:800;font-size:clamp(20px,1.8vw,26px);letter-spacing:.04em;text-transform:uppercase">Manta Sleep</h3></article>
+<article style="display:flex;flex-direction:column;gap:20px"><div class="reel-wrap">
+<video poster="assets/work/dr-hydrate-poster.jpg" muted loop playsinline preload="metadata" style="width:100%;height:auto;aspect-ratio:720/1280;display:block;object-fit:cover"><source src="assets/work/dr-hydrate.mp4" type="video/mp4"><source src="assets/work/dr-hydrate.webm" type="video/webm"></video>
+<div class="reel-hint">Hover to play</div>
+<button class="reel-snd" type="button" aria-pressed="false">Sound off</button>
+</div><h3 style="margin:0;font-weight:800;font-size:clamp(20px,1.8vw,26px);letter-spacing:.04em;text-transform:uppercase">Dr. Hydrate</h3></article>
+</div>
+</section>
+
 
 <!-- CONSULTING -->
 <section id="consulting" style="border-top:1px solid #E2E2E2;padding:100px 6vw 120px;box-sizing:border-box;max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-end">
@@ -186,8 +224,8 @@ a:hover{opacity:.6}
 </div>
 <script>
 (function(){
-function init(wid,vid,sid,hid){
-var w=document.getElementById(wid),v=document.getElementById(vid),b=document.getElementById(sid),h=document.getElementById(hid);
+function init(w){
+var v=w.querySelector('video'),b=w.querySelector('.reel-snd'),h=w.querySelector('.reel-hint');
 if(!v)return;
 var hover=window.matchMedia&&window.matchMedia('(hover:hover)').matches;
 function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});w.classList.add('on')}
@@ -196,8 +234,7 @@ if(hover){w.addEventListener('mouseenter',play);w.addEventListener('mouseleave',
 else{h.textContent='Tap to play';w.addEventListener('click',function(e){if(e.target===b)return;v.paused?play():pause()})}
 b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;b.textContent=v.muted?'Sound off':'Sound on';b.setAttribute('aria-pressed',String(!v.muted))});
 }
-init('reelWrap','reelVideo','reelSnd','reelHint');
-init('dpWrap','dpVideo','dpSnd','dpHint');
+document.querySelectorAll('.reel-wrap').forEach(init);
 var tr=document.getElementById('dpTrack');
 if(tr){
 var sl=tr.querySelectorAll('.dp-ph'),cnt=document.getElementById('dpCount'),idx=0,timer=null,reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
