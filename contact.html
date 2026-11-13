@@ -24,6 +24,9 @@ a:hover{opacity:.6}
 .field::placeholder{color:#767676}
 .send{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;background:#0A0A0A;color:#FFFFFF;border:0;padding:18px 32px;min-height:48px;cursor:pointer;border-radius:0}
 .send:hover{background:#333333}
+.inq-msg{margin:0;font-size:18px;line-height:1.6;font-weight:300;color:#0A0A0A}
+.inq-err{margin:0;font-size:14px;line-height:1.5;color:#B00020}
+.send[disabled]{opacity:.5;cursor:default}
 </style>
 </head>
 <body>
@@ -51,11 +54,9 @@ a:hover{opacity:.6}
 <div style="display:flex;flex-wrap:wrap;gap:48px">
 
 <!-- Business -->
-<form action="https://formsubmit.co/info@sendonacreative.com" method="POST" style="flex:1 1 440px;min-width:0;box-sizing:border-box;border:1px solid #D6D6D6;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+<form class="inq" data-kind="brand" action="https://formspree.io/f/xnpdjvbr" method="POST" style="flex:1 1 440px;min-width:0;box-sizing:border-box;border:1px solid #D6D6D6;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:28px">
 <input type="hidden" name="_subject" value="New brand inquiry - sendona.">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://sendonacreative.com/contact.html?sent=1">
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 <div style="display:flex;flex-direction:column;gap:12px">
 <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">01</div>
 <h2 style="margin:0;font-weight:800;font-size:clamp(22px,2.4vw,32px);letter-spacing:.02em;text-transform:uppercase">Brand Inquiries</h2>
@@ -63,11 +64,11 @@ a:hover{opacity:.6}
 </div>
 <div>
 <label for="biz-name" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Name</label>
-<input class="field" id="biz-name" name="name" type="text" placeholder="Your name" autocomplete="name">
+<input class="field" id="biz-name" required name="name" type="text" placeholder="Your name" autocomplete="name">
 </div>
 <div>
 <label for="biz-email" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Email</label>
-<input class="field" id="biz-email" name="email" type="email" placeholder="you@company.com" autocomplete="email">
+<input class="field" id="biz-email" required name="email" type="email" placeholder="you@company.com" autocomplete="email">
 </div>
 <div>
 <label for="biz-company" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Company</label>
@@ -85,11 +86,9 @@ a:hover{opacity:.6}
 </form>
 
 <!-- Athletes / Influencers -->
-<form action="https://formsubmit.co/info@sendonacreative.com" method="POST" style="flex:1 1 440px;min-width:0;box-sizing:border-box;border:1px solid #D6D6D6;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+<form class="inq" data-kind="athlete" action="https://formspree.io/f/xaeoqjdr" method="POST" style="flex:1 1 440px;min-width:0;box-sizing:border-box;border:1px solid #D6D6D6;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:28px">
 <input type="hidden" name="_subject" value="New athlete & influencer inquiry - sendona.">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://sendonacreative.com/contact.html?sent=1">
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 <div style="display:flex;flex-direction:column;gap:12px">
 <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">02</div>
 <h2 style="margin:0;font-weight:800;font-size:clamp(22px,2.4vw,32px);letter-spacing:.02em;text-transform:uppercase">Athlete &amp; Influencer Inquiries</h2>
@@ -97,11 +96,11 @@ a:hover{opacity:.6}
 </div>
 <div>
 <label for="ath-name" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Name</label>
-<input class="field" id="ath-name" name="name" type="text" placeholder="Your name" autocomplete="name">
+<input class="field" id="ath-name" required name="name" type="text" placeholder="Your name" autocomplete="name">
 </div>
 <div>
 <label for="ath-email" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Email</label>
-<input class="field" id="ath-email" name="email" type="email" placeholder="you@email.com" autocomplete="email">
+<input class="field" id="ath-email" required name="email" type="email" placeholder="you@email.com" autocomplete="email">
 </div>
 <div>
 <label for="ath-handle" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#6B6B6B">Sport or niche, and main handle</label>
@@ -136,5 +135,24 @@ a:hover{opacity:.6}
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('form.inq').forEach(function(f){
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=f.querySelector('button[type=submit]'),label=btn.textContent;
+    btn.disabled=true;btn.textContent='Sending...';
+    var old=f.querySelector('.inq-err');if(old)old.remove();
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
+      .then(function(r){if(!r.ok)throw new Error('bad');
+        f.innerHTML='<div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6B6B6B">Sent</div><p class="inq-msg">Thank you. We got your inquiry and will be in touch soon.</p>';})
+      .catch(function(){
+        btn.disabled=false;btn.textContent=label;
+        var p=document.createElement('p');p.className='inq-err';
+        p.innerHTML='Something went wrong. Please try again or email <a href="mailto:info@sendonacreative.com" style="text-decoration:underline">info@sendonacreative.com</a>.';
+        btn.parentNode.appendChild(p);
+      });
+  });
+});
+</script>
 </body>
 </html>
